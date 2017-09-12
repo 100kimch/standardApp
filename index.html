@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>standard layout</title>
+	<script type="text/javascript" src="javascripts/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="javascripts/standardModule.js"></script>
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/standardUI.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/serviceUI.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/tagAsInputUI.css" />
+	<script>
+
+	$(document).ready(function(){
+		MEMO.initialize();
+		TAG.initialize();
+
+		$('form').on('submit', function(e) {
+			console.log(JSON.stringify($(this).serializeArray()));
+			MEMO.test(e.target);
+			e.preventDefault();
+		});
+	});
+
+	</script>
+</head>
+<body app-id="Wall">
+	<div class="alert">
+		<h1>Alert!</h1>
+		<button class="closeButton">Close</button>
+	</div>
+	<div id="subBackground1"></div>
+	<div id="subBackground2"></div>
+	<div class="intro">
+		<h1>Welcome!</h1>
+		<p>This is standard layout made by 100kimch</p>
+	</div>
+
+	<nav lang=en>
+		<input type="radio" name="menu" id="Wall" accesskey="1" checked>
+		<label for="Wall">Wall</label>
+		<input type="radio" name="menu" id="Todo" accesskey="2">
+		<label for="Todo">Todo</label>
+		<input type="radio" name="menu" id="People" accesskey="3">
+		<label for="People">People</label>
+
+		<input type="checkbox" id="optionButton">
+		<label for="optionButton">OPTIONS</label>
+	</nav>
+
+	<div id="container">
+		<div id="Wall" class="contents currentContent">
+			<h3>Hello World!</h3>
+
+			<div class="sections">
+				<section data-item="pMemoPeople">
+					<h1>+ MemoPeople</h1>
+					<form id="plusPeople" autocomplete="off">
+						<div class="nameCard">
+							<div class="profileImage"></div>
+							<div class="profileInfo">
+								<div>
+									<input type="text" name="cardFirstName" placeholder="성" required>
+									<input type="text" name="cardLastName" placeholder="이름" required>
+
+								</div>
+								<div>
+									<input type="text" name="cardJob" placeholder="직업" class="f3">
+									<input type="radio" id="man" name="cardSex" placeholder="성별" value="M">
+									<label for="man">남</label>
+									<input type="radio" id="woman" name="cardSex" placeholder="성별" value="F">
+									<label for="woman">여</label>
+								</div>
+								<div>
+									<input type="text" name="cardPhoneNumber" placeholder="휴대전화" class="f4">
+									<input type="text" name="cardAge" placeholder="나이">
+								</div>
+								<div>
+									<input type="text" name="cardPoint" placeholder="거주지">
+								</div>
+								<div>
+									<input type="date" name="cardBirthday" placeholder="생일">
+								</div>
+								<div>
+									<input type="text" name="cardEmail" placeholder="이메일">
+								</div>
+								<div class="tagContainer">
+									<input type="hidden" name="cardGroup" class="tagData" value="">
+									<!-- TODO: do not send this data -->
+									<input type="text" class="tagAdder" placeholder="+태그추가">
+								</div>
+							</div>
+						</div>
+						<div class="submit">
+							<input type="submit" value="SUBMIT" />
+							<input type="reset" value="RESET" />
+						</div>
+					</form>
+				</section>
+				<section data-item="pForm">
+					<h1>Form Test</h1>
+					<form>
+						<div>
+							<input type="text" id="test" placeholder="이름" required>
+							<input type="date" id="test2">
+							<input type="text" id="test3" placeholder="이름">
+						</div>
+						<div>
+							<input type="checkbox" id="test4">
+							<label for="test4">TEST SIDE</label>
+							<input type="checkbox" id="test5">
+							<label for="test5">TEST SIDE</label>
+							<input type="checkbox" id="test6">
+							<label for="test6">TEST SIDE</label>
+						</div>
+						<div class="submit">
+							<input type="submit" value="SUBMIT" />
+							<input type="reset" value="RESET" />
+						</div>
+					</form>
+				</section>
+
+				<section data-item="pTodo">
+					<h1>+ MemoTodo</h1>
+					<!-- CkEditor -->
+						<textarea name="test11"></textarea>
+				</section>
+				<section data-item="3"><h1>2</h1><p>이것은 테스트창입니다.</p></section>
+				<section data-item="4"><h1>3</h1></section>
+
+				<section data-item="5">4</section>
+				<section data-item="6" style="height: 0;"></section>
+			</div>
+		</div>
+
+		<div id="Todo" class="contents">
+			<h3>Todo</h3>
+			<div class="board">
+				<div class="list">
+					<select></select>
+					<dl>
+						<dt>A</dt>
+						<dd>Andrew W.K.</dd>
+						<dd>Apparat</dd>
+						<dd>Arcade Fire</dd>
+						<dd>At The Drive-In</dd>
+						<dd>Aziz Ansari</dd>
+					</dl>
+					<dl>
+						<dt>C</dt>
+						<dd>Chromeo</dd>
+						<dd>Common</dd>
+						<dd>Converge</dd>
+						<dd>Crystal Castles</dd>
+						<dd>Cursive</dd>
+					</dl>
+					<dl>
+						<dt>E</dt>
+						<dd>Explosions In The Sky</dd>
+					</dl>
+					<dl>
+						<dt>T</dt>
+						<dd>Ted Leo , The Pharmacists</dd>
+						<dd>T-Pain</dd>
+						<dd>Thrice</dd>
+						<dd>TV On The Radio</dd>
+						<dd>Two Gallants</dd>
+					</dl>
+				</div>
+				<div class="sections">
+					<section class="addNew">
+						<S-category>New</S-category>
+						<div>
+							<form>
+								<div>
+									<input type="text" name="title" id="title" placeholder="제목" autocomplete="off">
+								</div>
+								<div>
+									<textarea id="TodoTest" name="contents">응</textarea>
+								</div>
+								<div>
+									<input type="tag">
+								</div>
+								<div class="submit">
+									<input type="submit" value="SUBMIT" />
+									<input type="reset" value="RESET" />
+								</div>
+							</form>
+						</div>						
+					</section>
+					<section>
+						<S-category>약속</S-category>
+						<div>
+							<h1>안녕</h1>
+						</div>
+					</section>
+					<section>
+						<S-category>테스트</S-category>
+						<input type="tag">
+					</section>
+					<section>
+						<S-category>New</S-category>
+						<div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+
+		<div id="People" class="contents">
+			<h3>People</h3>
+			<div class="list">
+					<dl>
+						<dt>A</dt>
+						<dd>Andrew W.K.</dd>
+						<dd>Apparat</dd>
+						<dd>Arcade Fire</dd>
+						<dd>At The Drive-In</dd>
+						<dd>Aziz Ansari</dd>
+					</dl>
+					<dl>
+						<dt>C</dt>
+						<dd>Chromeo</dd>
+						<dd>Common</dd>
+						<dd>Converge</dd>
+						<dd>Crystal Castles</dd>
+						<dd>Cursive</dd>
+					</dl>
+					<dl>
+						<dt>E</dt>
+						<dd>Explosions In The Sky</dd>
+					</dl>
+					<dl>
+						<dt>T</dt>
+						<dd>Ted Leo , The Pharmacists</dd>
+						<dd>T-Pain</dd>
+						<dd>Thrice</dd>
+						<dd>TV On The Radio</dd>
+						<dd>Two Gallants</dd>
+					</dl>
+				</div>
+				<div class="sections">
+					<section>1</section>
+					<section>2</section>
+					<section>3</section>
+					<section>4</section>
+					<section>5</section>
+				</div>
+			</div>
+		</div>
+
+		<div id="optionBar">
+			<h2 lang="en">OPTIONS</h2>
+		</div>
+
+
+		<div class="speedDial">
+			<button class="circle">
+				<img src="images/speeddial.png">
+			</button>
+			<div class="subs">
+				<button class="subCircle" id="T"><dt>To-Do</dt></button>
+				<button class="subCircle" id="A"><dt>Asset</dt></button>
+				<button class="subCircle" id="S"><dt>Store</dt></button>
+				<button class="subCircle" id="P"><dt>People</dt></button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
